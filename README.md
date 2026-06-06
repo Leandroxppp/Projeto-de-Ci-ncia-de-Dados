@@ -217,6 +217,7 @@ Universidade Federal de Alagoas (UFAL)
 # 📄 Licença
 
 Projeto desenvolvido para fins acadêmicos.
+<<<<<<< HEAD
 
 1. Criando um novo projetoPara criar um projeto do zero já com a estrutura básica, use:
 
@@ -252,3 +253,5 @@ Caso prefira abrir um terminal dentro do ambiente virtual isolado, basta digitar
 Para rodar:
 
 `poetry run python src/projeto_cd/main.py`
+=======
+>>>>>>> d7b3bef088beddaa66d280b654b81470cd0528bf
