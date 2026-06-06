@@ -1,0 +1,6 @@
+Resumo dos testes estatísticos (H2)
+Formato: descrição | c_a | n_a | c_b | n_b | z | p-value
+
+Desconto vs Preço Cheio | 39933 | 46428 | 673557 | 773208 | -6.865173873058195 | 6.640910044097836e-12
+Comparação: Premium (>$60) vs Barato (<$10) | 935 | 1444 | 201834 | 231414 | -25.37259169825371 | 0.0
+Comparação: Premium (>$60) vs Medio ($10-$30) | 935 | 1444 | 368359 | 416546 | -28.000559689875946 | 0.0
