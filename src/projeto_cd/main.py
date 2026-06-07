@@ -477,11 +477,16 @@ def interpretability_shap(model, X_train, X_test):
 
 if __name__ == "__main__":
     # Definição dos caminhos locais relativos ao módulo (funciona de qualquer cwd)
-    BASE_DIR = os.path.dirname(__file__)
-    GAMES_CSV = os.path.join(BASE_DIR, "games.csv")
-    USERS_CSV = os.path.join(BASE_DIR, "users.csv")
-    RECS_CSV = os.path.join(BASE_DIR, "recommendations.csv")
-    META_JSON = os.path.join(BASE_DIR, "games_metadata_formatado.json")
+    # Obtém a raiz do projeto (diretório que contém a pasta 'data')
+    current_dir = os.path.dirname(os.path.abspath(__file__))   # .../src/projeto_cd
+    BASE_DIR = os.path.dirname(current_dir)                     # .../src
+    if os.path.basename(BASE_DIR) == 'src':                     # se ainda estiver em 'src'
+        BASE_DIR = os.path.dirname(BASE_DIR)                    # sobe para a raiz do projeto
+
+    GAMES_CSV = os.path.join(BASE_DIR, "data", "games.csv")
+    USERS_CSV = os.path.join(BASE_DIR, "data", "users.csv")
+    RECS_CSV = os.path.join(BASE_DIR, "data", "recommendations.csv")
+    META_JSON = os.path.join(BASE_DIR, "data", "games_metadata.json")
     # Configuração de execução: tamanho da amostra (padrão usado pelo pipeline)
     SAMPLE_SIZE = 1000000
     # registra metadados desta execução para rastreabilidade
