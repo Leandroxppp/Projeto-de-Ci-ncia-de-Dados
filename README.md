@@ -27,12 +27,14 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 ## 🎯 Objetivos
 
+O projeto busca aplicar técnicas de Ciência de Dados para gerar valor a partir dos dados da Steam, organizando-se em quatro objetivos principais:
+
 | Objetivo | Descrição |
 |----------|-----------|
-| Predizer | Recomendações positivas e negativas com modelos de classificação |
-| Identificar | Fatores que mais influenciam a satisfação (preço, tempo jogado, descontos) |
-| Gerar | Insights acionáveis para publishers e desenvolvedores |
-| Construir | Visualizações e dashboards interativos para análise de negócio |
+| 🔮 Predizer | Recomendações positivas e negativas com modelos de classificação |
+| 🔍 Identificar | Fatores que mais influenciam a satisfação (preço, tempo jogado, descontos) |
+| 💡 Gerar | Insights acionáveis para publishers e desenvolvedores |
+| 📊 Construir | Visualizações e dashboards interativos para análise de negócio |
 
 ---
 
@@ -52,9 +54,11 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 ## 🧠 Tecnologias Utilizadas
 
+O pipeline foi construído com as seguintes tecnologias, organizadas por categoria:
+
 | Categoria | Tecnologias |
 |-----------|-------------|
-| Linguagem | Python 3.14+ |
+| 🐍 Linguagem | Python 3.14+ |
 | Manipulação de dados | Pandas, NumPy |
 | Visualização | Matplotlib, Seaborn, Plotly |
 | Machine Learning | Scikit-Learn, XGBoost, LightGBM |
@@ -67,6 +71,8 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 ## ⚙️ Etapas do Projeto
 
+Além disos, o pipeline foi estruturado em sete etapas, desde a compreensão dos dados até a disponibilização dos resultados:
+
 | Etapa | Atividades |
 |-------|------------|
 | **1.** Entendimento da Base | Análise das entidades, integração dos datasets, definição do problema de negócio |
@@ -74,39 +80,39 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 | **3.** Análise Exploratória | Distribuição do target, relação preço-satisfação, impacto do tempo jogado, comparação free vs pago |
 | **4.** Modelagem | Regressão Logística, Random Forest, **XGBoost** (selecionado) |
 | **5.** Avaliação | Accuracy, Precision, Recall, **F1-Score**, ROC-AUC — com Stratified K-Fold CV |
-| **6.** Explainable AI | SHAP para explicar decisões dos modelos |
+| **6.** Explicabilidade | SHAP para explicar decisões dos modelos |
 | **7.** Dashboard | Streamlit com filtros dinâmicos e gráficos interativos |
 
 ---
 
-## 📈 Principais Insights
+## 📄 Artigo Científico
 
-| Insight | Conclusão |
-|---------|-----------|
-| Tempo moderado de gameplay | Maiores taxas de recomendação |
-| Jogos caros com pouco conteúdo | Maior insatisfação |
-| Jogos gratuitos (F2P) | Comportamento de recomendação diferente dos pagos |
-| Descontos promocionais | Influenciam positivamente a percepção de valor |
+As observações detalhadas, análises estatísticas completas e insights aprofundados sobre os dados
+estão documentados no artigo científico desenvolvido ao longo do projeto.
 
----
+> 📎 **Você pode acessar o artigo completo por aqui:** [`artigo`](./artigo.pdf)  
 
-## 💡 Recomendações Estratégicas
+O artigo aborda:
 
-| Ação | Benefício |
-|------|-----------|
-| Otimizar estratégias de precificação | Aumentar conversão sem sacrificar satisfação |
-| Campanhas promocionais direcionadas | Melhor ROI em descontos sazonais |
-| Melhorar sistemas de recomendação | Aumentar retenção e engajamento |
-| Foco em retenção para jogos premium | Reduzir churn em títulos de alto valor |
-| Personalizar ofertas por comportamento | Maior taxa de aceitação de recomendações |
+| Tópico | Descrição |
+|--------|-----------|
+| **Metodologia** | Formulação das hipóteses (H1, H2, H3), delineamento experimental e justificativa das abordagens |
+| **Análise descritiva** | Distribuições, correlações e estatísticas sumarizadas de todas as variáveis |
+| **Testes de hipótese** | Resultados completos dos testes Z para duas proporções com interpretação estatística |
+| **Comparação de modelos** | Curvas de aprendizado, matrizes de confusão e análise de erro por modelo |
+| **Interpretabilidade** | SHAP values detalhados, importâncias de features e análise de dependência parcial |
+| **Implicações práticas** | Discussão sobre o impacto dos achados para decisões de produto e negócio |
+| **Limitações** | Viéses identificados, restrições do dataset e direções para trabalhos futuros |
 
 ---
 
 ## 📊 Dashboard
 
+O projeto conta com um dashboard interativo desenvolvido em Streamlit para exploração visual dos resultados:
+
 | Funcionalidade | Descrição |
 |---------------|-----------|
-| Filtros dinâmicos | Selecione por faixa de preço, categoria de horas, modelo de monetização |
+| 🔍 Filtros dinâmicos | Selecione por faixa de preço, categoria de horas, modelo de monetização |
 | Gráficos interativos | Visualizações das hipóteses H1, H2 e H3 |
 | Análise de satisfação | Taxas de recomendação por segmento |
 | Importância das variáveis | Feature importance e SHAP summary |
