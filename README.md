@@ -224,7 +224,43 @@ poetry run streamlit run dashboard/app.py
 poetry add nome-do-pacote
 ```
 
-Todas as dependências do projeto estão gerenciadas pelo `pyproject.toml` e pelo `poetry.lock`, garantindo reprodutibilidade do ambiente.
+> [!NOTE]
+> Todas as dependências do projeto estão gerenciadas pelo `pyproject.toml` e pelo `poetry.lock`, garantindo reprodutibilidade do ambiente.
+
+## 5. Testes de Escalabilidade com GPU (Opcional)
+
+Para executar os testes de escalabilidade com suporte a GPU (aceleração via CUDA), siga os passos abaixo.
+
+### 5.1. Criar ambiente Conda com suporte GPU
+
+```bash
+conda create -n xgb-gpu python=3.12 -y
+conda activate xgb-gpu
+conda install -c conda-forge py-xgboost-gpu pandas numpy scikit-learn matplotlib seaborn shap -y
+```
+
+### 5.2. Executar os scripts de teste
+
+Todos os scripts de teste estão na pasta tests/.
+
+Teste de flutuação (1k a 1M amostras):
+```bash
+python tests/test_scalability.py
+```
+
+Teste de 2M, 5M e 10M amostras (comparativo entre modelos):
+```bash
+python tests/test_scalability_large.py
+```
+
+Teste unificado de 15M a 30M amostras (apenas XGBoost):
+```bash
+python tests/test_range_unified.py
+```
+
+Os resultados (CSV, gráficos e relatórios) serão salvos em subpastas dentro de tests/ (ex.: test_results_range_unified/, test_results_large/).
+
+    Nota: Os scripts de teste utilizam leitura eficiente (chunked sampling) para não carregar todo o dataset na memória. Certifique‑se de ter pelo menos 16 GB de RAM disponível para amostras até 30M.
 
 ---
 
