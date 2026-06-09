@@ -170,20 +170,61 @@ O projeto inclui um dashboard interativo desenvolvido com Streamlit contendo:
 ## 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seuusuario/steaminsight-ai.git
+git clone https://github.com/Leandroxppp/Projeto-de-Ci-ncia-de-Dados.git
+cd Projeto-de-Ci-ncia-de-Dados
 ```
 
-## 2. Instalar Dependências
+## 2. Instalar o Poetry
+
+Caso ainda não tenha o Poetry instalado, siga a [documentação oficial](https://python-poetry.org/docs/#installation):
 
 ```bash
-pip install -r requirements.txt
+# Linux / macOS / WSL
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Windows (PowerShell)
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
 ```
 
-## 3. Executar Dashboard
+> ⚠️ Certifique-se de que o diretório de instalação do Poetry está no `PATH` do seu sistema.
+
+## 3. Instalar as Dependências
+
+Com o Poetry instalado, instale as dependências do projeto:
 
 ```bash
-streamlit run dashboard/app.py
+poetry install
 ```
+
+Isso criará um ambiente virtual isolado e instalará todas as dependências listadas no `pyproject.toml`.
+
+## 4. Ativar o Ambiente Virtual
+
+```bash
+poetry env activate
+```
+
+Ou execute comandos diretamente sem ativar o shell:
+
+```bash
+poetry run comando
+```
+
+## 5. Executar o Dashboard
+
+```bash
+poetry run streamlit run dashboard/app.py
+```
+
+---
+
+### 📦 Caso precise adicionar novas dependências
+
+```bash
+poetry add nome-do-pacote
+```
+
+Todas as dependências do projeto estão gerenciadas pelo `pyproject.toml` e pelo `poetry.lock`, garantindo reprodutibilidade do ambiente.
 
 ---
 
