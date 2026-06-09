@@ -190,8 +190,7 @@ streamlit run dashboard/app.py
 # 📁 Estrutura do Projeto
 
 ```bash
-steaminsight-ai/
-│
+projeto/
 ├── data/
 ├── notebooks/
 ├── src/
@@ -217,41 +216,3 @@ Universidade Federal de Alagoas (UFAL)
 # 📄 Licença
 
 Projeto desenvolvido para fins acadêmicos.
-<<<<<<< HEAD
-
-1. Criando um novo projetoPara criar um projeto do zero já com a estrutura básica, use:
-
-`poetry new meu-projeto`
-`cd meu-projeto`
-
-Alternativamente, se você já tem uma pasta com códigos, basta entrar na pasta e iniciar o Poetry com: `poetry init`.
-
-2. Instalando e gerenciando dependênciasPara instalar bibliotecas, use o comando add. O Poetry vai adicionar o pacote automaticamente ao seu arquivo pyproject.toml e criar um ambiente virtual se ele não existir.
-
-`poetry add requests pandas`
-
-Para instalar dependências de desenvolvimento (como ferramentas de testes ou linters), adicione a flag --group dev:
-
-`poetry add pytest --group dev`
-
-3. Removendo dependênciasPara remover um pacote e atualizar o ambiente, use:
-
-`poetry remove requests`
-
-4. Rodando seu código dentro do ambiente virtualNão há necessidade de ativar e desativar o ambiente virtual manualmente com o Poetry. Para executar qualquer script dentro do ambiente isolado, use:
-
-`poetry run python main.py`
-
-Caso prefira abrir um terminal dentro do ambiente virtual isolado, basta digitar:
-
-`poetry shell`
-
-5. Configurando dependências existentesSe você clonou um projeto do GitHub que já possui o arquivo pyproject.toml, basta baixar as dependências exigidas executando:
-
-`poetry install`
-
-Para rodar:
-
-`poetry run python src/projeto_cd/main.py`
-=======
->>>>>>> d7b3bef088beddaa66d280b654b81470cd0528bf
