@@ -1,5 +1,5 @@
 """
-main.py — Ponto de entrada do Pipeline de Ciência de Dados.
+main.py — Ponto de entrada do Pipeline do projeto
 
 Uso com Poetry (recomendado):
     poetry run pipeline
@@ -20,7 +20,7 @@ warnings.filterwarnings("ignore")
 
 
 def main() -> None:
-    """Executa o pipeline completo de recomendação de jogos Steam."""
+    """Executa o pipeline completo"""
     executar_pipeline()
 
 

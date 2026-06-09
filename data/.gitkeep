@@ -1,0 +1,9 @@
+# Arquivos de dados (.csv, .json) devem ser colocados aqui.
+#
+# Estrutura esperada:
+#   data/
+#   ├── recommendations.csv
+#   ├── games.csv
+#   ├── users.csv
+#   ├── games_metadata_formatado.json
+#   └── games_metadata.json

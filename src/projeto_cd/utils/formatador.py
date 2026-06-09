@@ -2,7 +2,7 @@ import json
 
 dados_combinados = []
 
-# Abra o seu arquivo original (substitua pelo nome correto do seu arquivo)
+# Abre o arquivo original
 with open('games_metadata.json', 'r', encoding='utf-8') as arquivo_origem:
     for linha in arquivo_origem:
         linha_limpa = linha.strip()

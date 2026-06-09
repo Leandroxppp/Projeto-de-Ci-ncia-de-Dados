@@ -1,5 +1,5 @@
 """
-pipeline.py — Orquestrador completo do pipeline de Ciência de Dados.
+pipeline.py — Orquestrador completo do pipeline do projeto
 
 Coordena as etapas de carregamento, engenharia de atributos, análise
 exploratória, testes estatísticos, modelagem preditiva e interpretabilidade.
@@ -12,8 +12,8 @@ from projeto_cd.analise.exploratoria import gerar_graficos_exploratorios
 from projeto_cd.analise.interpretabilidade import calcular_shap
 from projeto_cd.analise.testes_estatisticos import executar_testes_estatisticos
 from projeto_cd.config import (
+    DATA_DIR,
     DEFAULT_SAMPLE_SIZE,
-    MODULE_DIR,
     PLOTS_DIR,
 )
 from projeto_cd.dados.carregamento import (
@@ -36,7 +36,7 @@ def executar_pipeline(
     sample_size: int = DEFAULT_SAMPLE_SIZE,
 ) -> None:
     """
-    Executa o pipeline completo de recomendação de jogos Steam.
+    Executa o pipeline completo do projeto
 
     Etapas:
         1. Carregamento e subamostragem dos dados
@@ -50,29 +50,29 @@ def executar_pipeline(
     ----------
     caminho_games : str, opcional
         Caminho do arquivo ``games.csv``.
-        Se não informado, busca em ``MODULE_DIR``.
+        Se não informado, busca em ``data/`` na raiz do projeto.
     caminho_users : str, opcional
         Caminho do arquivo ``users.csv``.
-        Se não informado, busca em ``MODULE_DIR``.
+        Se não informado, busca em ``data/`` na raiz do projeto.
     caminho_recs : str, opcional
         Caminho do arquivo ``recommendations.csv``.
-        Se não informado, busca em ``MODULE_DIR``.
+        Se não informado, busca em ``data/`` na raiz do projeto.
     caminho_meta : str, opcional
         Caminho do arquivo de metadados (JSON).
         Se não informado, busca ``games_metadata_formatado.json``
-        em ``MODULE_DIR``.
+        em ``data/`` na raiz do projeto.
     sample_size : int, opcional
         Número de registros para subamostragem estratificada (padrão: 200.000).
     """
     # ── Resolução de caminhos padrão ────────────────────────────────────
     if caminho_recs is None:
-        caminho_recs = os.path.join(MODULE_DIR, "recommendations.csv")
+        caminho_recs = os.path.join(DATA_DIR, "recommendations.csv")
     if caminho_games is None:
-        caminho_games = os.path.join(MODULE_DIR, "games.csv")
+        caminho_games = os.path.join(DATA_DIR, "games.csv")
     if caminho_users is None:
-        caminho_users = os.path.join(MODULE_DIR, "users.csv")
+        caminho_users = os.path.join(DATA_DIR, "users.csv")
     if caminho_meta is None:
-        caminho_meta = os.path.join(MODULE_DIR, "games_metadata_formatado.json")
+        caminho_meta = os.path.join(DATA_DIR, "games_metadata_formatado.json")
 
     # ── Metadados da execução ────────────────────────────────────────────
     log_run_metadata(sample_size, PLOTS_DIR)

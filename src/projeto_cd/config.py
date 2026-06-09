@@ -14,6 +14,12 @@ import seaborn as sns
 # Diretório raiz do pacote (src/projeto_cd)
 MODULE_DIR: str = os.path.dirname(__file__)
 
+# Diretório raiz do projeto (dois níveis acima do pacote)
+PROJECT_ROOT: str = os.path.dirname(os.path.dirname(MODULE_DIR))
+
+# Diretório onde os arquivos de dados (.csv, .json) devem ser armazenados
+DATA_DIR: str = os.path.join(PROJECT_ROOT, "data")
+
 # Diretório onde os gráficos e artefatos do pipeline são salvos
 PLOTS_DIR: str = os.path.join(MODULE_DIR, "plots")
 
