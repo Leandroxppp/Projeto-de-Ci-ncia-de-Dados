@@ -1,0 +1,36 @@
+# Large dataset files (CSV, JSON) – não subir para o repositório
+data/*.csv
+data/*.json
+
+# Python bytecode e cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Poetry (já que usamos poetry.lock e pyproject.toml)
+poetry.lock
+
+# Jupyter notebooks (caso existam)
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs e metadados de execução (excluir apenas os gerados localmente)
+*.log
+src/projeto_cd/plots/run_metadata.txt
+
+# OS generated files
+.DS_Store
+Thumbs.db

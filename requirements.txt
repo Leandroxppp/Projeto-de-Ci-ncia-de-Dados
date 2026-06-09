@@ -1,0 +1,18 @@
+# Core data manipulation
+pandas>=3.0.3
+numpy>=2.4.6
+
+# Visualization
+matplotlib>=3.10.9
+seaborn>=0.13.2
+
+# Machine Learning
+scikit-learn>=1.9.0
+xgboost>=3.2.0
+
+# Explainability
+shap>=0.52.0
+
+# Utilities
+joblib>=1.5.3
+requests>=2.34.2
