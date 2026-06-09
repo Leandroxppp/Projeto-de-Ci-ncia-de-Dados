@@ -14,12 +14,12 @@ A indústria de jogos digitais enfrenta um grande desafio com mais de **50 mil j
 
 | Área | Impacto |
 |------|--------|
-| 👤 Experiência do usuário | Recomendações irrelevantes diminuem o engajamento |
-| 📈 Retenção de jogadores | Jogadores insatisfeitos abandonam a plataforma |
-| 📢 Marketing de jogos | Dificuldade em posicionar títulos para o público certo |
-| 💰 Precificação | Estratégias de preço sem respaldo em dados de satisfação |
-| 🔍 Visibilidade dos títulos | Jogos de qualidade soterrados por lançamentos genéricos |
-| 🏢 Decisões estratégicas | Publishers sem métricas para direcionar investimentos |
+| Experiência do usuário | Recomendações irrelevantes diminuem o engajamento |
+| Retenção de jogadores | Jogadores insatisfeitos abandonam a plataforma |
+| Marketing de jogos | Dificuldade em posicionar títulos para o público certo |
+| Precificação | Estratégias de preço sem respaldo em dados de satisfação |
+| Visibilidade dos títulos | Jogos de qualidade soterrados por lançamentos genéricos |
+| Decisões estratégicas | Publishers sem métricas para direcionar investimentos |
 
 Diante disso, este projeto busca **prever se um usuário recomendará ou não um jogo** com base em características comportamentais e atributos dos jogos.
 
@@ -29,10 +29,10 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 | Objetivo | Descrição |
 |----------|-----------|
-| 🔮 Predizer | Recomendações positivas e negativas com modelos de classificação |
-| 🔍 Identificar | Fatores que mais influenciam a satisfação (preço, tempo jogado, descontos) |
-| 💡 Gerar | Insights acionáveis para publishers e desenvolvedores |
-| 📊 Construir | Visualizações e dashboards interativos para análise de negócio |
+| Predizer | Recomendações positivas e negativas com modelos de classificação |
+| Identificar | Fatores que mais influenciam a satisfação (preço, tempo jogado, descontos) |
+| Gerar | Insights acionáveis para publishers e desenvolvedores |
+| Construir | Visualizações e dashboards interativos para análise de negócio |
 
 ---
 
@@ -42,11 +42,11 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 | Característica | Valor |
 |---------------|-------|
-| 📁 Arquivos | `games.csv`, `users.csv`, `recommendations.csv`, `games_metadata.json` |
-| 📝 Avaliações | **+41 milhões** de recomendações |
-| 👥 Usuários | Milhares de interações entre usuários e jogos |
-| 🏷️ Metadados | Tags, descrições e categorias dos jogos |
-| ✅ Target | `is_recommended` — binário (recomenda / não recomenda) |
+| Arquivos | `games.csv`, `users.csv`, `recommendations.csv`, `games_metadata.json` |
+| Avaliações | **+41 milhões** de recomendações |
+| Usuários | Milhares de interações entre usuários e jogos |
+| Metadados | Tags, descrições e categorias dos jogos |
+| Target | `is_recommended` — binário (recomenda / não recomenda) |
 
 ---
 
@@ -54,14 +54,14 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 | Categoria | Tecnologias |
 |-----------|-------------|
-| 🐍 Linguagem | Python 3.14+ |
-| 📊 Manipulação de dados | Pandas, NumPy |
-| 📈 Visualização | Matplotlib, Seaborn, Plotly |
-| 🤖 Machine Learning | Scikit-Learn, XGBoost, LightGBM |
-| 🔬 Explainable AI | SHAP |
-| 🖥️ Aceleração | CUDA (GPU) via XGBoost |
-| 🎛️ Dashboard | Streamlit |
-| 📦 Gerenciamento | Poetry |
+| Linguagem | Python 3.14+ |
+| Manipulação de dados | Pandas, NumPy |
+| Visualização | Matplotlib, Seaborn, Plotly |
+| Machine Learning | Scikit-Learn, XGBoost, LightGBM |
+| Explainable AI | SHAP |
+| Aceleração | CUDA (GPU) via XGBoost |
+| Dashboard | Streamlit |
+| Gerenciamento | Poetry |
 
 ---
 
@@ -83,10 +83,10 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 | Insight | Conclusão |
 |---------|-----------|
-| ⏱️ Tempo moderado de gameplay | Maiores taxas de recomendação |
-| 💸 Jogos caros com pouco conteúdo | Maior insatisfação |
-| 🆓 Jogos gratuitos (F2P) | Comportamento de recomendação diferente dos pagos |
-| 🏷️ Descontos promocionais | Influenciam positivamente a percepção de valor |
+| Tempo moderado de gameplay | Maiores taxas de recomendação |
+| Jogos caros com pouco conteúdo | Maior insatisfação |
+| Jogos gratuitos (F2P) | Comportamento de recomendação diferente dos pagos |
+| Descontos promocionais | Influenciam positivamente a percepção de valor |
 
 ---
 
@@ -94,11 +94,11 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 | Ação | Benefício |
 |------|-----------|
-| 💲 Otimizar estratégias de precificação | Aumentar conversão sem sacrificar satisfação |
-| 🎯 Campanhas promocionais direcionadas | Melhor ROI em descontos sazonais |
-| ⚙️ Melhorar sistemas de recomendação | Aumentar retenção e engajamento |
-| 👑 Foco em retenção para jogos premium | Reduzir churn em títulos de alto valor |
-| 🧠 Personalizar ofertas por comportamento | Maior taxa de aceitação de recomendações |
+| Otimizar estratégias de precificação | Aumentar conversão sem sacrificar satisfação |
+| Campanhas promocionais direcionadas | Melhor ROI em descontos sazonais |
+| Melhorar sistemas de recomendação | Aumentar retenção e engajamento |
+| Foco em retenção para jogos premium | Reduzir churn em títulos de alto valor |
+| Personalizar ofertas por comportamento | Maior taxa de aceitação de recomendações |
 
 ---
 
@@ -106,11 +106,11 @@ Diante disso, este projeto busca **prever se um usuário recomendará ou não um
 
 | Funcionalidade | Descrição |
 |---------------|-----------|
-| 🔍 Filtros dinâmicos | Selecione por faixa de preço, categoria de horas, modelo de monetização |
-| 📈 Gráficos interativos | Visualizações das hipóteses H1, H2 e H3 |
-| ⭐ Análise de satisfação | Taxas de recomendação por segmento |
-| 🎯 Importância das variáveis | Feature importance e SHAP summary |
-| 🔎 Exploração de padrões | Correlações entre atributos e o target |
+| Filtros dinâmicos | Selecione por faixa de preço, categoria de horas, modelo de monetização |
+| Gráficos interativos | Visualizações das hipóteses H1, H2 e H3 |
+| Análise de satisfação | Taxas de recomendação por segmento |
+| Importância das variáveis | Feature importance e SHAP summary |
+| Exploração de padrões | Correlações entre atributos e o target |
 
 ---
 
