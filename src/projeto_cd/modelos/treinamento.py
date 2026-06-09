@@ -27,6 +27,7 @@ from projeto_cd.config import (
     PLOTS_DIR,
     RANDOM_STATE,
     TEST_SIZE,
+    USE_GPU,
 )
 from projeto_cd.utils.utilitarios import safe_name
 
@@ -263,6 +264,7 @@ def treinar_e_avaliar(
     df_modelo: pd.DataFrame,
     features: Optional[list[str]] = None,
     out_dir: Optional[str] = None,
+    use_gpu: bool = USE_GPU,
 ) -> tuple[Any, pd.DataFrame, pd.DataFrame]:
     """
     Executa o pipeline completo de treinamento e avaliação dos modelos.
@@ -283,6 +285,10 @@ def treinar_e_avaliar(
     out_dir : str, opcional
         Diretório de saída para gráficos e artefatos.
         Se não informado, usa ``PLOTS_DIR``.
+    use_gpu : bool, opcional
+        Se ``True``, ativa aceleração CUDA no XGBoost (``device='cuda'``).
+        Se não informado, usa o valor de ``USE_GPU`` da configuração global
+        (detectado automaticamente na inicialização).
 
     Retorna
     -------
@@ -305,6 +311,19 @@ def treinar_e_avaliar(
     )
 
     # Definição dos modelos
+    # XGBoost com suporte a GPU (CUDA) quando disponível
+    parametros_xgb: dict[str, Any] = {
+        "use_label_encoder": False,
+        "eval_metric": "logloss",
+        "random_state": RANDOM_STATE,
+    }
+    if use_gpu:
+        parametros_xgb["tree_method"] = "hist"
+        parametros_xgb["device"] = "cuda"
+        print("  [XGBoost] GPU ativada (device='cuda')")
+    else:
+        print("  [XGBoost] Executando em CPU")
+
     modelos = {
         "Regressão Logística (Baseline)": LogisticRegression(
             max_iter=1000, class_weight="balanced"
@@ -312,9 +331,7 @@ def treinar_e_avaliar(
         "Random Forest": RandomForestClassifier(
             n_estimators=100, class_weight="balanced", random_state=RANDOM_STATE
         ),
-        "XGBoost Classifier": xgb.XGBClassifier(
-            use_label_encoder=False, eval_metric="logloss", random_state=RANDOM_STATE
-        ),
+        "XGBoost Classifier": xgb.XGBClassifier(**parametros_xgb),
     }
 
     # Validação cruzada estratificada

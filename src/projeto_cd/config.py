@@ -58,6 +58,21 @@ RANDOM_STATE: int = 42
 TEST_SIZE: float = 0.2
 N_FOLDS: int = 5
 
+# ── Detecção de GPU (aceleração CUDA) ──────────────────────────────────────
+
+# Flag global indicando se GPU está disponível para XGBoost
+USE_GPU: bool = False
+
+try:
+    # Teste rápido com XGBoost em CUDA
+    import xgboost as xgb
+    xgb.XGBClassifier(n_estimators=1, tree_method="hist", device="cuda").fit([[0]], [0])
+    USE_GPU = True
+    print("GPU CUDA detectada — aceleração ativada para XGBoost.")
+except Exception:
+    USE_GPU = False
+    print("GPU não disponível — XGBoost executará em CPU.")
+
 # ── Garantia de existência do diretório de saída ───────────────────────────
 
 os.makedirs(PLOTS_DIR, exist_ok=True)
