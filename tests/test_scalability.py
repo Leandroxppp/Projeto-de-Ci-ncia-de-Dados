@@ -9,25 +9,39 @@ Gera tabela CSV, graficos com barras de erro e relatorio Markdown.
 import os
 import sys
 import time
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 from datetime import datetime
-from sklearn.model_selection import train_test_split
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import xgboost as xgb
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-import xgboost as xgb
-from sklearn.metrics import f1_score, roc_auc_score, accuracy_score, precision_score, recall_score
+from sklearn.metrics import (
+    accuracy_score,
+    f1_score,
+    precision_score,
+    recall_score,
+    roc_auc_score,
+)
+from sklearn.model_selection import train_test_split
 
-# Adiciona o diretorio src/projeto_cd ao path para importar o main
+# Adiciona o diretorio src ao path para importar o pacote projeto_cd
 current_dir = os.path.dirname(os.path.abspath(__file__))          # tests/
 project_root = os.path.dirname(current_dir)                      # raiz do projeto
-src_path = os.path.join(project_root, 'src', 'projeto_cd')
+src_path = os.path.join(project_root, 'src')
 if src_path not in sys.path:
     sys.path.insert(0, src_path)
 
-# Agora podemos importar as funcoes do main
-from main import load_and_preprocess
+# Importa as funcoes modularizadas do pipeline
+from projeto_cd.dados.carregamento import (
+    carregar_games,
+    carregar_metadados,
+    carregar_recommendations,
+    carregar_usuarios,
+    integrar_dados,
+)
+from projeto_cd.dados.engenharia_atributos import executar_engenharia_completa
 
 # Configuracoes (ajuste conforme necessidade)
 SAMPLE_SIZES = [1000, 5000, 10000, 50000, 100000, 500000, 1000000]
@@ -52,11 +66,13 @@ def evaluate_models_on_sample(sample_size: int, trial: int):
     Carrega uma amostra de tamanho `sample_size`, prepara os dados e
     avalia todos os modelos, retornando um dicionario com as metricas.
     """
-    # 1. Carregar e pre-processar
-    df_model, _ = load_and_preprocess(
-        GAMES_CSV, USERS_CSV, RECS_CSV, META_JSON,
-        sample_size=sample_size
-    )
+    # 1. Carregar e pre-processar (usando as funcoes modularizadas)
+    recs = carregar_recommendations(RECS_CSV, sample_size)
+    games = carregar_games(GAMES_CSV)
+    users = carregar_usuarios(USERS_CSV)
+    meta = carregar_metadados(META_JSON)
+    df = integrar_dados(recs, games, users, meta)
+    df_model, _ = executar_engenharia_completa(df)
 
     # 2. Selecionar features (mesmas do main.py)
     features = [

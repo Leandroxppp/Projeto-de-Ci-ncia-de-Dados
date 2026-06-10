@@ -8,237 +8,315 @@ O projeto foi desenvolvido para a disciplina de Ciência de Dados da Universidad
 
 ---
 
-# 📌 Problema
+## 📌 Problema
 
-A indústria de jogos digitais enfrenta um grande desafio relacionado à satisfação dos usuários e à eficiência dos sistemas de recomendação.
+A indústria de jogos digitais enfrenta um grande desafio com mais de **50 mil jogos** na Steam, onde uma parcela significativa dos títulos comprados nunca chega a ser jogada. Isso gera impactos diretos em:
 
-Atualmente, a Steam possui mais de 50 mil jogos disponíveis, e uma parcela significativa dos títulos comprados nunca chega a ser jogada. Isso gera impactos diretos em:
+| Área | Impacto |
+|------|--------|
+| Experiência do usuário | Recomendações irrelevantes diminuem o engajamento |
+| Retenção de jogadores | Jogadores insatisfeitos abandonam a plataforma |
+| Marketing de jogos | Dificuldade em posicionar títulos para o público certo |
+| Precificação | Estratégias de preço sem respaldo em dados de satisfação |
+| Visibilidade dos títulos | Jogos de qualidade soterrados por lançamentos genéricos |
+| Decisões estratégicas | Publishers sem métricas para direcionar investimentos |
 
-* experiência do usuário;
-* retenção de jogadores;
-* marketing de jogos;
-* precificação;
-* visibilidade dos títulos;
-* decisões estratégicas de publishers e desenvolvedores.
-
-Diante disso, este projeto busca prever se um usuário recomendará ou não um jogo com base em características comportamentais e atributos dos jogos.
-
----
-
-# 🎯 Objetivos
-
-* Prever recomendações positivas e negativas;
-* Identificar os fatores que mais influenciam a satisfação;
-* Gerar insights acionáveis;
-* Apoiar decisões estratégicas para publishers e desenvolvedores;
-* Construir visualizações e dashboards interativos para análise de negócio.
+Diante disso, este projeto busca **prever se um usuário recomendará ou não um jogo** com base em características comportamentais e atributos dos jogos.
 
 ---
 
-# 📊 Base de Dados
+## 🎯 Objetivos
 
-Dataset utilizado:
+O projeto busca aplicar técnicas de Ciência de Dados para gerar valor a partir dos dados da Steam, organizando-se em quatro objetivos principais:
 
-**Game Recommendations on Steam**
-
-Fonte:
-https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam
-
-Arquivos principais:
-
-* games.csv
-* users.csv
-* recommendations.csv
-
-A base contém:
-
-* mais de 41 milhões de avaliações;
-* interações entre usuários e jogos;
-* metadados dos jogos;
-* recomendações binárias (recomenda/não recomenda).
+| Objetivo | Descrição |
+|----------|-----------|
+| 🔮 Predizer | Recomendações positivas e negativas com modelos de classificação |
+| 🔍 Identificar | Fatores que mais influenciam a satisfação (preço, tempo jogado, descontos) |
+| 💡 Gerar | Insights acionáveis para publishers e desenvolvedores |
+| 📊 Construir | Visualizações e dashboards interativos para análise de negócio |
 
 ---
 
-# 🧠 Tecnologias Utilizadas
+## 📊 Base de Dados
 
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-Learn
-* XGBoost
-* LightGBM
-* SHAP
-* Streamlit
-* Plotly
+**Dataset:** [Game Recommendations on Steam](https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam)  
+
+| Característica | Valor |
+|---------------|-------|
+| Arquivos | `games.csv`, `users.csv`, `recommendations.csv`, `games_metadata.json` |
+| Avaliações | **+41 milhões** de recomendações |
+| Usuários | Milhares de interações entre usuários e jogos |
+| Metadados | Tags, descrições e categorias dos jogos |
+| Target | `is_recommended` — binário (recomenda / não recomenda) |
 
 ---
 
-# ⚙️ Etapas do Projeto
+## 🧠 Tecnologias Utilizadas
 
-## 1. Entendimento da Base
+O pipeline foi construído com as seguintes tecnologias, organizadas por categoria:
 
-* análise das entidades;
-* integração dos datasets;
-* definição do problema de negócio.
-
-## 2. Pré-processamento
-
-* tratamento de valores ausentes;
-* remoção de inconsistências;
-* transformação de variáveis;
-* engenharia de atributos.
-
-## 3. Análise Exploratória (EDA)
-
-* distribuição da variável alvo;
-* relação entre preço e satisfação;
-* impacto do tempo jogado;
-* comparação entre jogos gratuitos e pagos;
-* análise de gêneros e padrões de recomendação.
-
-## 4. Modelagem
-
-Modelos avaliados:
-
-* Regressão Logística
-* Random Forest
-* XGBoost
-
-## 5. Avaliação
-
-Métricas utilizadas:
-
-* Accuracy
-* Precision
-* Recall
-* F1-Score
-* ROC-AUC
-* Matriz de Confusão
-
-Estratégias:
-
-* Train/Test Split
-* Stratified K-Fold Cross Validation
-
-## 6. Explainable AI
-
-Utilização de SHAP (SHapley Additive exPlanations) para explicar as decisões dos modelos.
-
-## 7. Dashboard Interativo
-
-Dashboard desenvolvido em Streamlit para exploração visual e análise interativa dos resultados.
+| Categoria | Tecnologias |
+|-----------|-------------|
+| 🐍 Linguagem | Python 3.14+ |
+| Manipulação de dados | Pandas, NumPy |
+| Visualização | Matplotlib, Seaborn, Plotly |
+| Machine Learning | Scikit-Learn, XGBoost, LightGBM |
+| Explainable AI | SHAP |
+| Aceleração | CUDA (GPU) via XGBoost |
+| Dashboard | Streamlit |
+| Gerenciamento | Poetry |
 
 ---
 
-# 📈 Principais Insights
+## ⚙️ Etapas do Projeto
 
-* Jogos com tempo moderado de gameplay apresentam maiores taxas de recomendação.
-* Jogos caros tendem a gerar maior insatisfação quando oferecem pouco conteúdo jogável.
-* Jogos gratuitos apresentam comportamento de recomendação diferente dos jogos pagos.
-* Descontos influenciam positivamente a percepção de valor do usuário.
+Além disos, o pipeline foi estruturado em sete etapas, desde a compreensão dos dados até a disponibilização dos resultados:
 
----
-
-# 💡 Recomendações Estratégicas
-
-Com base nas análises realizadas, o projeto sugere:
-
-* otimização de estratégias de precificação;
-* campanhas promocionais direcionadas;
-* melhoria de sistemas de recomendação;
-* foco em retenção para jogos premium;
-* uso de comportamento do usuário para personalização de ofertas.
+| Etapa | Atividades |
+|-------|------------|
+| **1.** Entendimento da Base | Análise das entidades, integração dos datasets, definição do problema de negócio |
+| **2.** Pré-processamento | Tratamento de valores ausentes, remoção de inconsistências, transformação de variáveis, engenharia de atributos |
+| **3.** Análise Exploratória | Distribuição do target, relação preço-satisfação, impacto do tempo jogado, comparação free vs pago |
+| **4.** Modelagem | Regressão Logística, Random Forest, **XGBoost** (selecionado) |
+| **5.** Avaliação | Accuracy, Precision, Recall, **F1-Score**, ROC-AUC — com Stratified K-Fold CV |
+| **6.** Explicabilidade | SHAP para explicar decisões dos modelos |
+| **7.** Dashboard | Streamlit com filtros dinâmicos e gráficos interativos |
 
 ---
 
-# 📊 Dashboard
+## 📄 Artigo Científico
 
-O projeto inclui um dashboard interativo desenvolvido com Streamlit contendo:
+As observações detalhadas, análises estatísticas completas e insights aprofundados sobre os dados
+estão documentados no artigo científico desenvolvido ao longo do projeto.
 
-* filtros dinâmicos;
-* gráficos interativos;
-* análise de satisfação;
-* visualização de importância das variáveis;
-* exploração de padrões de comportamento.
+> 📎 **Você pode acessar o artigo completo por aqui:** [`artigo`](./artigo.pdf)  
+
+O artigo aborda:
+
+| Tópico | Descrição |
+|--------|-----------|
+| **Metodologia** | Formulação das hipóteses (H1, H2, H3), delineamento experimental e justificativa das abordagens |
+| **Análise descritiva** | Distribuições, correlações e estatísticas sumarizadas de todas as variáveis |
+| **Testes de hipótese** | Resultados completos dos testes Z para duas proporções com interpretação estatística |
+| **Comparação de modelos** | Curvas de aprendizado, matrizes de confusão e análise de erro por modelo |
+| **Interpretabilidade** | SHAP values detalhados, importâncias de features e análise de dependência parcial |
+| **Implicações práticas** | Discussão sobre o impacto dos achados para decisões de produto e negócio |
+| **Limitações** | Viéses identificados, restrições do dataset e direções para trabalhos futuros |
 
 ---
 
-# 🚀 Como Executar
+## 📊 Dashboard
 
-## 1. Clonar o Repositório
+O projeto conta com um dashboard interativo desenvolvido em Streamlit para exploração visual dos resultados:
+
+| Funcionalidade | Descrição |
+|---------------|-----------|
+| 🔍 Filtros dinâmicos | Selecione por faixa de preço, categoria de horas, modelo de monetização |
+| Gráficos interativos | Visualizações das hipóteses H1, H2 e H3 |
+| Análise de satisfação | Taxas de recomendação por segmento |
+| Importância das variáveis | Feature importance e SHAP summary |
+| Exploração de padrões | Correlações entre atributos e o target |
+
+---
+
+## 🚀 Como Executar
+
+### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seuusuario/steaminsight-ai.git
+git clone https://github.com/Leandroxppp/Projeto-de-Ci-ncia-de-Dados.git
+cd Projeto-de-Ci-ncia-de-Dados
 ```
 
-## 2. Instalar Dependências
+### 2. Instalar o Poetry
+
+Caso ainda não tenha o Poetry instalado, siga a [documentação oficial](https://python-poetry.org/docs/#installation):
+
+<details>
+<summary>Instalar o Poetry</summary>
 
 ```bash
-pip install -r requirements.txt
+# Linux / macOS / WSL
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Windows (PowerShell)
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
 ```
 
-## 3. Executar Dashboard
+</details>
+
+> ⚠️ Certifique-se de que o diretório de instalação do Poetry está no `PATH` do seu sistema.
+
+### 3. Preparar os Dados
+
+Baixe os arquivos do dataset [Game Recommendations on Steam](https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam) e coloque-os na pasta `data/`:
+
+```
+data/
+├── recommendations.csv
+├── games.csv
+├── users.csv
+├── games_metadata.json
+└── games_metadata_formatado.json   # (opcional, gerado pelo formatador)
+```
+
+Caso tenha o arquivo original `games_metadata.json` no formato JSON Lines, é possível gerar o `games_metadata_formatado.json` executando:
 
 ```bash
-streamlit run dashboard/app.py
+poetry run python -m projeto_cd.utils.formatador
 ```
 
-## 4. Testes de Escalabilidade com GPU (Opcional)
+### 4. Instalar as Dependências
 
-Para executar os testes de escalabilidade com suporte a GPU (aceleração via CUDA), siga os passos abaixo.
+```bash
+poetry install
+```
 
-### 4.1. Criar ambiente Conda com suporte GPU
+Isso criará um ambiente virtual isolado e instalará todas as dependências listadas no `pyproject.toml`.
+
+### 5. Executar o Pipeline
+
+O pipeline completo executa as etapas de carregamento, análise exploratória, testes estatísticos, treinamento de modelos e interpretabilidade SHAP.
+
+**Pipeline completo (recomendado):**
+
+```bash
+poetry run pipeline
+```
+
+**Ou como módulo Python:**
+
+```bash
+poetry run python -m projeto_cd
+```
+
+A saída incluirá:
+- Gráficos das hipóteses H1, H2 e H3 salvos em `src/projeto_cd/plots/`
+- Testes estatísticos (Z-test) salvos em `stat_tests_summary.txt`
+- Curvas ROC, métricas por fold e importância das features
+- Gráfico SHAP de interpretabilidade global
+- Modelo com melhor desempenho persistido (`best_model.joblib`)
+
+### 6. Executar o Dashboard
+
+```bash
+poetry run streamlit run dashboard/app.py
+```
+
+---
+
+### 📦 Caso precise adicionar novas dependências
+
+```bash
+poetry add nome-do-pacote
+```
+
+> [!NOTE]
+> Todas as dependências do projeto estão gerenciadas pelo `pyproject.toml` e pelo `poetry.lock`, garantindo reprodutibilidade do ambiente.
+
+---
+
+## 🖥️ Suporte a GPU (CUDA)
+
+O pipeline detecta **automaticamente** se uma GPU compatível com CUDA está disponível e ativa a aceleração no XGBoost. Nenhuma configuração manual é necessária.
+
+Para forçar o uso de CPU mesmo com GPU disponível:
+
+```python
+from projeto_cd.pipeline import executar_pipeline
+executar_pipeline()  # usa GPU se disponível
+
+# Ou explicitamente:
+from projeto_cd.modelos.treinamento import treinar_e_avaliar
+treinar_e_avaliar(df_modelo, use_gpu=False)
+```
+
+### Ambiente Conda para GPU (opcional)
+
+Caso o Poetry não encontre a biblioteca XGBoost com suporte CUDA no ambiente atual, crie um ambiente Conda dedicado:
 
 ```bash
 conda create -n xgb-gpu python=3.12 -y
 conda activate xgb-gpu
 conda install -c conda-forge py-xgboost-gpu pandas numpy scikit-learn matplotlib seaborn shap -y
+pip install poetry
+poetry install
 ```
-
-### 4.2. Executar os scripts de teste
-
-Todos os scripts de teste estão na pasta tests/.
-
-Teste de flutuação (1k a 1M amostras):
-```bash
-python tests/test_scalability.py
-```
-
-Teste de 2M, 5M e 10M amostras (comparativo entre modelos):
-```bash
-python tests/test_scalability_large.py
-```
-
-Teste unificado de 15M a 30M amostras (apenas XGBoost):
-```bash
-python tests/test_range_unified.py
-```
-
-Os resultados (CSV, gráficos e relatórios) serão salvos em subpastas dentro de tests/ (ex.: test_results_range_unified/, test_results_large/).
-
-    Nota: Os scripts de teste utilizam leitura eficiente (chunked sampling) para não carregar todo o dataset na memória. Certifique‑se de ter pelo menos 16 GB de RAM disponível para amostras até 30M.
 
 ---
 
-# 📁 Estrutura do Projeto
+## 🧪 Testes de Escalabilidade
+
+Scripts para avaliar o desempenho dos modelos em diferentes volumes de dados, com suporte a GPU.
+
+### Teste de flutuação (1k a 1M amostras)
+
+Compara Regressão Logística, Random Forest e XGBoost com 3 repetições por tamanho:
 
 ```bash
-steaminsight-ai/
-│
-├── data/
-├── notebooks/
+poetry run python tests/test_scalability.py
+```
+
+### Teste de amostras grandes (2M, 5M e 10M)
+
+Utiliza leitura eficiente (chunked sampling) para não carregar todo o dataset na memória:
+
+```bash
+poetry run python tests/test_scalability_large.py
+```
+
+### Teste unificado (15M a 30M, apenas XGBoost)
+
+Permite especificar tamanhos personalizados via argumentos:
+
+```bash
+poetry run python tests/test_scalability_range_unified.py
+poetry run python tests/test_scalability_range_unified.py 15000000 20000000 25000000
+```
+
+> **Nota:** Os resultados (CSV, gráficos e relatórios) são salvos em subpastas dentro de `tests/`. Recomenda-se pelo menos 16 GB de RAM para amostras acima de 10M.
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+Projeto-de-Ci-ncia-de-Dados/
+├── data/                           # 📁 Arquivos de dados (.csv, .json)
 ├── src/
-├── dashboard/
-├── reports/
-├── models/
-└── images/
+│   └── projeto_cd/                 # 📦 Pacote principal
+│       ├── __init__.py
+│       ├── __main__.py             # Ponto de entrada (python -m projeto_cd)
+│       ├── config.py               # Configurações globais (caminhos, constantes, GPU)
+│       ├── pipeline.py             # Orquestrador do pipeline
+│       ├── main.py                 # Entry point do Poetry
+│       ├── dados/
+│       │   ├── carregamento.py     # Leitura, subamostragem e merges
+│       │   └── engenharia_atributos.py  # Feature engineering
+│       ├── analise/
+│       │   ├── exploratoria.py     # Gráficos H1, H2, H3
+│       │   ├── testes_estatisticos.py  # Testes Z para proporções
+│       │   └── interpretabilidade.py   # SHAP explainability
+│       ├── modelos/
+│       │   └── treinamento.py      # Treino, CV e avaliação com GPU
+│       ├── utils/
+│       │   ├── utilitarios.py      # Funções auxiliares
+│       │   └── formatador.py       # Script de formatação JSON
+│       └── plots/                  # 📈 Gráficos e artefatos gerados
+├── tests/                          # 🧪 Scripts de escalabilidade
+│   ├── test_scalability.py
+│   ├── test_scalability_large.py
+│   ├── test_scalability_range_unified.py
+│   └── test_results*/              # Resultados das execuções
+├── dashboard/                      # 📊 Dashboard Streamlit
+├── pyproject.toml
+└── README.md
 ```
 
 ---
 
-# 👨‍💻 Equipe
+## 👨‍💻 Equipe
 
 * Eduardo Maciel Alexandre
 * Josenilton Ferreira da Silva Junior
@@ -249,41 +327,6 @@ Universidade Federal de Alagoas (UFAL)
 
 ---
 
-# 📄 Licença
+## 📄 Licença
 
 Projeto desenvolvido para fins acadêmicos.
-
-1. Criando um novo projetoPara criar um projeto do zero já com a estrutura básica, use:
-
-`poetry new meu-projeto`
-`cd meu-projeto`
-
-Alternativamente, se você já tem uma pasta com códigos, basta entrar na pasta e iniciar o Poetry com: `poetry init`.
-
-2. Instalando e gerenciando dependênciasPara instalar bibliotecas, use o comando add. O Poetry vai adicionar o pacote automaticamente ao seu arquivo pyproject.toml e criar um ambiente virtual se ele não existir.
-
-`poetry add requests pandas`
-
-Para instalar dependências de desenvolvimento (como ferramentas de testes ou linters), adicione a flag --group dev:
-
-`poetry add pytest --group dev`
-
-3. Removendo dependênciasPara remover um pacote e atualizar o ambiente, use:
-
-`poetry remove requests`
-
-4. Rodando seu código dentro do ambiente virtualNão há necessidade de ativar e desativar o ambiente virtual manualmente com o Poetry. Para executar qualquer script dentro do ambiente isolado, use:
-
-`poetry run python main.py`
-
-Caso prefira abrir um terminal dentro do ambiente virtual isolado, basta digitar:
-
-`poetry shell`
-
-5. Configurando dependências existentesSe você clonou um projeto do GitHub que já possui o arquivo pyproject.toml, basta baixar as dependências exigidas executando:
-
-`poetry install`
-
-Para rodar:
-
-`poetry run python src/projeto_cd/main.py`

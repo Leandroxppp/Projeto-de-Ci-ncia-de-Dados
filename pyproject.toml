@@ -1,7 +1,7 @@
 [project]
 name = "projeto-cd"
-version = "0.1.0"
-description = ""
+version = "0.2.0"
+description = "Pipeline de recomendação de jogos Steam com análise exploratória, testes estatísticos e modelos preditivos"
 authors = [
     {name = "914joseph",email = "jfsj2@ic.ufal.br"}
 ]
@@ -17,6 +17,9 @@ dependencies = [
     "shap (>=0.52.0,<0.53.0)",
     "scikit-learn (>=1.9.0,<2.0.0)"
 ]
+
+[project.scripts]
+pipeline = "projeto_cd.main:main"
 
 [tool.poetry]
 packages = [{include = "projeto_cd", from = "src"}]
