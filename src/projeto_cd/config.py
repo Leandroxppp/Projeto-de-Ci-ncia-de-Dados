@@ -30,7 +30,7 @@ sns.set_theme(style="whitegrid")
 # Dimensão padrão dos gráficos (largura, altura) — ajuste aqui para
 # controlar a proporção de todos os plots que herdam o valor global.
 # Valores maiores de largura favorecem o encaixe em colunas de texto.
-FIGURE_FIGSIZE: tuple[float, float] = (14, 5)
+FIGURE_FIGSIZE: tuple[float, float] = (20, 4)
 
 plt.rcParams["figure.figsize"] = FIGURE_FIGSIZE
 
