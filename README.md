@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/cover.png">
+  <source media="(prefers-color-scheme: light)" srcset=".github/cover_light.png">
+  <img alt="Projeto de Ciência de Dados - Steam" src=".github/cover.png">
+</picture>
+
 # 🎮 Projeto de Ciência de Dados
 
 ## Predição de Satisfação e Recomendação de Jogos na Steam
