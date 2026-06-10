@@ -26,7 +26,13 @@ PLOTS_DIR: str = os.path.join(MODULE_DIR, "plots")
 # ── Estética dos gráficos ───────────────────────────────────────────────────
 
 sns.set_theme(style="whitegrid")
-plt.rcParams["figure.figsize"] = (10, 6)
+
+# Dimensão padrão dos gráficos (largura, altura) — ajuste aqui para
+# controlar a proporção de todos os plots que herdam o valor global.
+# Valores maiores de largura favorecem o encaixe em colunas de texto.
+FIGURE_FIGSIZE: tuple[float, float] = (14, 5)
+
+plt.rcParams["figure.figsize"] = FIGURE_FIGSIZE
 
 # ── Parâmetros padrão do pipeline ───────────────────────────────────────────
 

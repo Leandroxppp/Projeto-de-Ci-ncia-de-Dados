@@ -78,7 +78,7 @@ def grafico_h2_faixa_preco(df) -> None:
     df : pd.DataFrame
         DataFrame (apenas jogos pagos) com ``price_tier`` e ``is_recommended``.
     """
-    plt.figure(figsize=(10, 6))
+    plt.figure()
     ax = sns.barplot(
         data=df,
         x="price_tier",
@@ -106,7 +106,7 @@ def grafico_h2_desconto(df) -> None:
     df : pd.DataFrame
         DataFrame (apenas jogos pagos) com ``has_discount`` e ``is_recommended``.
     """
-    plt.figure(figsize=(8, 6))
+    plt.figure()
     ax = sns.barplot(
         data=df,
         x="has_discount",

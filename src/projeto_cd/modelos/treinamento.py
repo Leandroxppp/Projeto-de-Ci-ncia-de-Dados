@@ -129,7 +129,7 @@ def _salvar_curva_roc(
     """
     fpr, tpr, _ = roc_curve(y_true, y_proba)
 
-    plt.figure()
+    plt.figure(figsize=(8, 5))
     plt.plot(fpr, tpr, label=f"AUC = {auc:.4f}")
     plt.plot([0, 1], [0, 1], "--", color="grey")
     plt.xlabel("Taxa de Falsos Positivos (FPR)")
@@ -158,7 +158,7 @@ def _salvar_importancias(
     out_dir : str
         Diretório de saída.
     """
-    plt.figure()
+    plt.figure(figsize=(10, 4.5))
     sns.barplot(data=df_importancias, x="importance", y="feature", palette="crest")
     plt.title(f"Importância das Features - {nome}")
     plt.tight_layout()
@@ -247,7 +247,7 @@ def _salvar_curvas_roc_sobrepostas(
     out_dir : str
         Diretório de saída.
     """
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(10, 5))
 
     for nome, (fpr, tpr, auc) in curvas_roc.items():
         plt.plot(fpr, tpr, label=f"{nome} (AUC = {auc:.3f})", linewidth=2)
