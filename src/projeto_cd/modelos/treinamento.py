@@ -233,6 +233,35 @@ def _salvar_comparacao_holdout(
     plt.close()
 
 
+def _salvar_curvas_roc_sobrepostas(
+    curvas_roc: dict[str, tuple[np.ndarray, np.ndarray, float]],
+    out_dir: str,
+) -> None:
+    """
+    Salva gráfico com as curvas ROC de todos os modelos sobrepostas.
+
+    Parâmetros
+    ----------
+    curvas_roc : dict[str, tuple[np.ndarray, np.ndarray, float]]
+        Dicionário mapeando nome do modelo → (fpr, tpr, auc).
+    out_dir : str
+        Diretório de saída.
+    """
+    plt.figure(figsize=(8, 6))
+
+    for nome, (fpr, tpr, auc) in curvas_roc.items():
+        plt.plot(fpr, tpr, label=f"{nome} (AUC = {auc:.3f})", linewidth=2)
+
+    plt.plot([0, 1], [0, 1], "--", color="grey", linewidth=1)
+    plt.xlabel("Taxa de Falsos Positivos (FPR)")
+    plt.ylabel("Taxa de Verdadeiros Positivos (TPR)")
+    plt.title("Curvas ROC — Comparação dos Modelos no Holdout")
+    plt.legend(loc="lower right")
+    plt.tight_layout()
+    plt.savefig(os.path.join(out_dir, "roc_comparado.png"), dpi=300, bbox_inches="tight")
+    plt.close()
+
+
 def _salvar_melhor_modelo(
     modelos: dict[str, Any],
     holdout_f1s: dict[str, float],
@@ -339,6 +368,7 @@ def treinar_e_avaliar(
 
     holdout_f1s: dict[str, float] = {}
     holdout_aucs: dict[str, float] = {}
+    curvas_roc: dict[str, tuple[np.ndarray, np.ndarray, float]] = {}
 
     for nome, modelo in modelos.items():
         cv_f1: list[float] = []
@@ -380,6 +410,9 @@ def treinar_e_avaliar(
 
         _salvar_curva_roc(nome, y_teste, y_proba_hold, auc, out_dir)
 
+        fpr, tpr, _ = roc_curve(y_teste, y_proba_hold)
+        curvas_roc[nome] = (fpr, tpr, auc)
+
         holdout_f1s[nome] = f1
         holdout_aucs[nome] = auc
 
@@ -390,6 +423,9 @@ def treinar_e_avaliar(
 
     # Gráfico comparativo
     _salvar_comparacao_holdout(holdout_f1s, holdout_aucs, out_dir)
+
+    # Curvas ROC sobrepostas (Figura 3)
+    _salvar_curvas_roc_sobrepostas(curvas_roc, out_dir)
 
     # Persiste o melhor modelo
     _salvar_melhor_modelo(modelos, holdout_f1s, out_dir)
